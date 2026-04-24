@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tech Lux Finance - AI Powered Luxury Wealth Management | Smart Investing, Premium Returns">
+  <title>Tech Lux Finance | Technology Meets Luxury Wealth</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+    
+    :root {
+      --gold: #D4AF37;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .heading {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .hero-bg {
+      background: linear-gradient(135deg, #0A0F1C 0%, #1A2338 100%);
+    }
+    
+    .glass {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    
+    .gold-text {
+      color: #D4AF37;
+    }
+    
+    .live-ticker {
+      animation: ticker 30s linear infinite;
+    }
+    
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgb(212 175 55 / 0.25);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #D4AF37;
+      transition: all 0.3s;
+    }
+    .nav-link:hover:after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-[#0A0F1C] text-white overflow-x-hidden">
+
+  <!-- TOP LIVE TICKER -->
+  <div class="bg-black py-2 text-xs font-medium border-b border-yellow-400/30 overflow-hidden">
+    <div class="flex items-center gap-8 whitespace-nowrap live-ticker" id="ticker">
+      <span class="flex items-center gap-2"><i class="fa-solid fa-chart-line text-green-400"></i> NIFTY 50 <span class="text-green-400">+142.35 (+0.68%)</span></span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-bitcoin-sign text-yellow-400"></i> BTC ₹68,45,920 <span class="text-green-400">+1.24%</span></span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-indian-rupee-sign"></i> SENSEX 78,456 <span class="text-green-400">+0.92%</span></span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-chart-line text-red-400"></i> GOLD ₹7,890 <span class="text-red-400">-0.45%</span></span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-dollar-sign text-blue-400"></i> USD/INR 83.92 <span class="text-green-400">+0.12%</span></span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-chart-line text-green-400"></i> NIFTY 50 <span class="text-green-400">+142.35 (+0.68%)</span></span>
+      <span class="flex items-center gap-2"><i class="fa-solid fa-bitcoin-sign text-yellow-400"></i> BTC ₹68,45,920 <span class="text-green-400">+1.24%</span></span>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0A0F1C]/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-cyan-400 rounded-2xl flex items-center justify-center text-2xl font-bold text-black">TL</div>
+        <h1 class="text-3xl heading tracking-tight">Tech Lux Finance</h1>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#platform" class="nav-link">Platform</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#insights" class="nav-link">Insights</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button onclick="toggleDarkMode()" class="w-9 h-9 flex items-center justify-center text-xl hover:text-yellow-400 transition">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button onclick="showLoginModal()" 
+                class="px-6 py-2.5 text-sm font-medium border border-white/40 hover:border-yellow-400 rounded-3xl transition">
+          Login
+        </button>
+        <button onclick="openAccount()" 
+                class="px-8 py-2.5 bg-gradient-to-r from-yellow-400 to-amber-500 text-black font-semibold rounded-3xl hover:scale-105 transition shadow-lg shadow-yellow-400/30">
+          Open Account Free
+        </button>
+        
+        <!-- Mobile Hamburger -->
+        <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">
+          <i class="fa-solid fa-bars" id="hamburger"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#0A0F1C] border-t border-white/10 px-6 py-6">
+      <div class="flex flex-col gap-6 text-lg">
+        <a href="#home" onclick="toggleMobileMenu()" class="flex items-center justify-between">Home <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="#services" onclick="toggleMobileMenu()" class="flex items-center justify-between">Services <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="#platform" onclick="toggleMobileMenu()" class="flex items-center justify-between">Platform <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="#about" onclick="toggleMobileMenu()" class="flex items-center justify-between">About Us <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="#pricing" onclick="toggleMobileMenu()" class="flex items-center justify-between">Pricing <i class="fa-solid fa-chevron-right"></i></a>
+        <div class="pt-4 border-t border-white/10">
+          <button onclick="openAccount()" class="w-full py-4 bg-yellow-400 text-black font-bold rounded-3xl">Open Account Free →</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero-bg min-h-screen flex items-center pt-24 relative">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        <div class="inline-flex items-center gap-2 bg-white/10 text-white text-sm font-medium px-6 py-2 rounded-3xl border border-white/20">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-400"></span>
+          </span>
+          RBI &amp; SEBI Registered • AI-Powered • ₹850 Cr+ AUM
+        </div>
+        
+        <h1 class="text-6xl md:text-7xl font-bold heading leading-none">
+          Technology ki <span class="gold-text">Power</span><br>
+          Luxury ki <span class="gold-text">Returns</span>
+        </h1>
+        
+        <p class="text-2xl text-gray-300 max-w-xl">
+          AI se chalti wealth management.<br>
+          World-class platform. Aapke paise ke liye sabse premium experience.
+        </p>
+        
+        <div class="flex flex-wrap gap-4">
+          <button onclick="openAccount()" 
+                  class="px-10 py-5 bg-gradient-to-r from-yellow-400 to-amber-500 text-black text-xl font-semibold rounded-3xl flex items-center gap-3 hover:scale-105 transition shadow-2xl shadow-yellow-400/40">
+            <i class="fa-solid fa-rocket"></i>
+            Free Account Kholein
+          </button>
+          
+          <button onclick="watchDemo()" 
+                  class="px-10 py-5 border-2 border-white/70 text-white text-xl font-medium rounded-3xl flex items-center gap-3 hover:bg-white/10 transition">
+            <i class="fa-solid fa-play"></i>
+            90-Second Demo
+          </button>
+        </div>
+        
+        <div class="flex items-center gap-8 text-sm">
+          <div class="flex -space-x-4">
+            <div class="w-8 h-8 bg-white rounded-2xl flex items-center justify-center text-black text-xs font-bold ring-2 ring-[#0A0F1C]">4.9</div>
+            <div class="w-8 h-8 bg-white/90 rounded-2xl flex items-center justify-center text-black text-xs font-bold ring-2 ring-[#0A0F1C]">12k+</div>
+          </div>
+          <p class="text-gray-400">12,450+ investors ne join kiya • 4.9/5 Trustpilot</p>
+          
+          <div class="h-10 w-px bg-white/20"></div>
+          
+          <div>
+            <i class="fa-solid fa-shield-halved text-3xl text-green-400"></i>
+            <span class="ml-2 text-sm">Bank-level 256-bit Encryption</span>
+          </div>
+        </div>
+        
+        <!-- Trust logos -->
+        <div class="flex items-center gap-8 text-3xl opacity-70">
+          <i class="fa-brands fa-google"></i>
+          <i class="fa-brands fa-cc-visa"></i>
+          <i class="fa-brands fa-cc-mastercard"></i>
+          <span class="text-2xl font-bold">RBI</span>
+          <span class="text-2xl font-bold">SEBI</span>
+        </div>
+      </div>
+      
+      <!-- Hero Visual -->
+      <div class="relative hidden md:block">
+        <div class="absolute -inset-6 bg-gradient-to-br from-yellow-400/20 via-cyan-400/10 to-transparent rounded-[4rem] rotate-6"></div>
+        <div class="glass rounded-3xl p-4 shadow-2xl relative">
+          <img src="https://picsum.photos/id/1015/800/620" 
+               alt="Luxury Wealth Dashboard" 
+               class="rounded-2xl w-full shadow-inner">
+          <div class="absolute top-8 right-8 bg-black/80 text-white text-xs px-4 py-2 rounded-2xl flex items-center gap-2">
+            <div class="w-2 h-2 bg-green-400 animate-pulse rounded-full"></div>
+            LIVE • Portfolio +₹4.2 Cr today
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 flex flex-col items-center text-xs tracking-widest">
+      <div class="animate-bounce">SCROLL FOR LUXURY</div>
+      <i class="fa-solid fa-chevron-down mt-2"></i>
+    </div>
+  </section>
+
+  <!-- FEATURES / WHY TECH LUX -->
+  <section class="py-24 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="text-yellow-400 text-sm font-semibold tracking-widest">WHY INVESTORS LOVE US</span>
+        <h2 class="text-5xl heading mt-3">Luxury + Technology = Unbeatable Returns</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="glass rounded-3xl p-8 card-hover">
+          <div class="text-5xl mb-6">🤖</div>
+          <h3 class="text-3xl font-semibold mb-3">AI Wealth Advisor</h3>
+          <p class="text-gray-400">Personalised investment strategies 24×7. Market prediction accuracy 94%+.</p>
+          <div class="mt-8 text-yellow-400 text-sm flex items-center gap-2">
+            <span>Try AI Demo →</span>
+          </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="glass rounded-3xl p-8 card-hover">
+          <div class="text-5xl mb-6">📊</div>
+          <h3 class="text-3xl font-semibold mb-3">Real-time Luxury Dashboard</h3>
+          <p class="text-gray-400">Track stocks, crypto, mutual funds, gold &amp; alternative assets in one beautiful screen.</p>
+          <div class="mt-8 text-yellow-400 text-sm flex items-center gap-2">
+            <span>Live Preview →</span>
+          </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="glass rounded-3xl p-8 card-hover">
+          <div class="text-5xl mb-6">🔒</div>
+          <h3 class="text-3xl font-semibold mb-3">Institutional Security</h3>
+          <p class="text-gray-400">Zero-knowledge encryption, 2FA, biometric login &amp; insurance up to ₹1 Crore.</p>
+          <div class="mt-8 text-yellow-400 text-sm flex items-center gap-2">
+            <span>Security Audit Report →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-24 bg-[#0A0F1C]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-5">
+          <span class="px-4 py-2 bg-yellow-400 text-black rounded-3xl text-sm font-bold">PRODUCTS</span>
+          <h2 class="text-5xl heading mt-6 leading-tight">Choose your luxury investment path</h2>
+          <p class="mt-6 text-xl text-gray-400">From beginner SIPs to HNIs ke private equity — sab kuch ek platform pe.</p>
+        </div>
+        
+        <div class="md:col-span-7 grid grid-cols-2 gap-6">
+          <div class="bg-gradient-to-br from-[#1A2338] to-black p-8 rounded-3xl card-hover border border-yellow-400/10">
+            <i class="fa-solid fa-chart-pie text-5xl mb-6 text-cyan-400"></i>
+            <h4 class="text-2xl font-semibold">Smart Mutual Funds + SIP</h4>
+            <p class="text-sm mt-2 text-gray-400">Zero commission • AI recommended • Tax harvesting</p>
+          </div>
+          <div class="bg-gradient-to-br from-[#1A2338] to-black p-8 rounded-3xl card-hover border border-yellow-400/10">
+            <i class="fa-solid fa-coins text-5xl mb-6 text-yellow-400"></i>
+            <h4 class="text-2xl font-semibold">Stocks &amp; F&amp;O Trading</h4>
+            <p class="text-sm mt-2 text-gray-400">Ultra-low brokerage • Advanced charts • Algo trading</p>
+          </div>
+          <div class="bg-gradient-to-br from-[#1A2338] to-black p-8 rounded-3xl card-hover border border-yellow-400/10">
+            <i class="fa-solid fa-bitcoin-sign text-5xl mb-6 text-orange-400"></i>
+            <h4 class="text-2xl font-semibold">Crypto &amp; Web3</h4>
+            <p class="text-sm mt-2 text-gray-400">Secure custody • Staking • NFT portfolio</p>
+          </div>
+          <div class="bg-gradient-to-br from-[#1A2338] to-black p-8 rounded-3xl card-hover border border-yellow-400/10">
+            <i class="fa-solid fa-gem text-5xl mb-6 text-purple-400"></i>
+            <h4 class="text-2xl font-semibold">Luxury Alternatives</h4>
+            <p class="text-sm mt-2 text-gray-400">Gold • Art • Real Estate • Private Credit</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATFORM DEMO / DASHBOARD PREVIEW -->
+  <section id="platform" class="py-24 bg-black relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-5xl heading">Your Personal Luxury Dashboard</h2>
+        <p class="text-gray-400 text-xl mt-4">Real-time. Beautiful. Powerful.</p>
+      </div>
+      
+      <!-- Fake Dashboard -->
+      <div class="glass rounded-3xl p-8 max-w-6xl mx-auto">
+        <div class="flex justify-between mb-8">
+          <div>
+            <div class="text-sm text-gray-400">Total Portfolio Value</div>
+            <div id="portfolio-value" class="text-5xl font-bold heading">₹4,28,65,420</div>
+            <div class="flex items-center gap-2 text-green-400 text-lg"><i class="fa-solid fa-arrow-trend-up"></i> +₹18,42,300 (4.5%) today</div>
+          </div>
+          <div class="text-right">
+            <div class="text-xs uppercase tracking-widest">AI Risk Score</div>
+            <div class="text-4xl font-bold text-cyan-400">28</div>
+            <div class="text-xs text-green-400">Low Risk • Diversified</div>
+          </div>
+        </div>
+        
+        <!-- Mini charts -->
+        <div class="grid grid-cols-3 gap-6">
+          <div class="bg-[#1A2338] rounded-2xl p-4">
+            <div class="text-xs mb-2">Asset Allocation</div>
+            <div class="flex justify-between text-sm mb-4">
+              <div>Stocks 42%</div>
+              <div>Crypto 18%</div>
+              <div>Gold 25%</div>
+              <div>Mutual Funds 15%</div>
+            </div>
+            <div class="h-2 bg-gray-700 rounded-full overflow-hidden flex">
+              <div class="h-2 bg-yellow-400 w-[42%]"></div>
+              <div class="h-2 bg-orange-400 w-[18%]"></div>
+              <div class="h-2 bg-amber-400 w-[25%]"></div>
+              <div class="h-2 bg-cyan-400 w-[15%]"></div>
+            </div>
+          </div>
+          <div class="bg-[#1A2338] rounded-2xl p-4 col-span-2">
+            <div class="text-xs mb-2 flex justify-between">
+              <span>Portfolio Performance</span>
+              <span class="text-green-400">Last 30 days</span>
+            </div>
+            <div class="h-52 bg-gradient-to-r from-transparent via-green-400/30 to-transparent relative flex items-end">
+              <!-- Fake line chart -->
+              <div class="absolute bottom-0 left-0 w-full h-40 flex items-end justify-around px-4">
+                <div class="bg-green-400 w-4 rounded-t" style="height: 25%"></div>
+                <div class="bg-green-400 w-4 rounded-t" style="height: 40%"></div>
+                <div class="bg-green-400 w-4 rounded-t" style="height: 35%"></div>
+                <div class="bg-green-400 w-4 rounded-t" style="height: 65%"></div>
+                <div class="bg-green-400 w-4 rounded-t" style="height: 55%"></div>
+                <div class="bg-green-400 w-4 rounded-t" style="height: 85%"></div>
+                <div class="bg-green-400 w-4 rounded-t" style="height: 78%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-24 bg-[#0A0F1C]">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-center text-5xl heading mb-16">Real investors. Real luxury returns.</h2>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass rounded-3xl p-8">
+          <p class="italic">"Mere ₹2 crore portfolio mein last 11 months mein 38% return aaya. AI ne exactly sahi time pe rebalance kiya."</p>
+          <div class="mt-8 flex gap-3">
+            <div class="w-10 h-10 bg-white/20 rounded-2xl"></div>
+            <div>
+              <div class="font-semibold">Ankit Sharma</div>
+              <div class="text-xs text-gray-400">Founder, Tech Startup • Delhi</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass rounded-3xl p-8">
+          <p class="italic">"Luxury feel + actual performance. Dedicated wealth manager + app dono top class hain."</p>
+          <div class="mt-8 flex gap-3">
+            <div class="w-10 h-10 bg-white/20 rounded-2xl"></div>
+            <div>
+              <div class="font-semibold">Priya Malhotra</div>
+              <div class="text-xs text-gray-400">Doctor • Lucknow</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass rounded-3xl p-8">
+          <p class="italic">"Crypto aur stocks dono manage kar raha hoon. Interface itna clean hai ki roz check karta hoon."</p>
+          <div class="mt-8 flex gap-3">
+            <div class="w-10 h-10 bg-white/20 rounded-2xl"></div>
+            <div>
+              <div class="font-semibold">Rohan Kapoor</div>
+              <div class="text-xs text-gray-400">CA • Mumbai</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-24 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-5xl heading">Plans jo aapki lifestyle se match karein</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Basic -->
+        <div class="glass rounded-3xl p-10 text-center">
+          <div class="text-yellow-400 font-medium">BASIC</div>
+          <div class="text-6xl font-bold heading my-4">Free</div>
+          <ul class="space-y-4 text-left mb-12">
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Basic portfolio tracking</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> 5 free trades/month</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Market alerts</li>
+          </ul>
+          <button onclick="openAccount()" class="w-full py-4 border border-yellow-400 text-yellow-400 rounded-3xl">Start Free</button>
+        </div>
+        
+        <!-- Pro -->
+        <div class="glass rounded-3xl p-10 text-center ring-2 ring-yellow-400 relative">
+          <div class="absolute -top-3 right-8 bg-yellow-400 text-black text-xs font-bold px-6 py-1 rounded-3xl">MOST POPULAR</div>
+          <div class="text-yellow-400 font-medium">PRO</div>
+          <div class="text-6xl font-bold heading my-4">₹999<span class="text-base font-normal">/month</span></div>
+          <ul class="space-y-4 text-left mb-12">
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Full AI Advisor</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Unlimited trades</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Advanced analytics</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Tax reports</li>
+          </ul>
+          <button onclick="openAccount()" class="w-full py-4 bg-yellow-400 text-black rounded-3xl font-semibold">Upgrade to Pro</button>
+        </div>
+        
+        <!-- Luxury -->
+        <div class="glass rounded-3xl p-10 text-center">
+          <div class="text-yellow-400 font-medium">LUXURY</div>
+          <div class="text-6xl font-bold heading my-4">₹4,999<span class="text-base font-normal">/month</span></div>
+          <ul class="space-y-4 text-left mb-12">
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Dedicated RM</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Private equity access</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Concierge support</li>
+            <li class="flex gap-3"><i class="fa-solid fa-check text-green-400"></i> Family office services</li>
+          </ul>
+          <button onclick="openAccount()" class="w-full py-4 border border-yellow-400 text-yellow-400 rounded-3xl">Become Luxury Member</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="py-20 bg-gradient-to-r from-yellow-400 to-amber-500 text-black">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h2 class="text-5xl heading">Ready to experience luxury investing?</h2>
+      <p class="mt-6 text-2xl">Join 50,000+ smart investors today. Takes only 90 seconds.</p>
+      <button onclick="openAccount()" 
+              class="mt-12 px-16 py-6 bg-black text-white text-2xl font-semibold rounded-3xl inline-flex items-center gap-4 hover:bg-black/90">
+        Open Your Tech Lux Account Now
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <p class="text-sm mt-6 opacity-75">No paperwork • Instant verification • Zero hidden fees</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black py-20 text-gray-400">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-5 gap-12">
+      <div>
+        <div class="flex items-center gap-3 text-white mb-6">
+          <div class="w-8 h-8 bg-yellow-400 rounded-2xl flex items-center justify-center text-black font-bold">TL</div>
+          <span class="text-2xl heading">Tech Lux Finance</span>
+        </div>
+        <p class="text-sm">Technology Meets Luxury Wealth</p>
+        <div class="mt-8 flex gap-6 text-2xl">
+          <i class="fa-brands fa-x-twitter cursor-pointer hover:text-yellow-400"></i>
+          <i class="fa-brands fa-linkedin cursor-pointer hover:text-yellow-400"></i>
+          <i class="fa-brands fa-instagram cursor-pointer hover:text-yellow-400"></i>
+        </div>
+      </div>
+      
+      <div>
+        <div class="font-semibold text-white mb-4">Platform</div>
+        <ul class="space-y-3 text-sm">
+          <li>Dashboard</li>
+          <li>AI Advisor</li>
+          <li>Mobile App</li>
+          <li>Marketplace</li>
+        </ul>
+      </div>
+      
+      <div>
+        <div class="font-semibold text-white mb-4">Company</div>
+        <ul class="space-y-3 text-sm">
+          <li>About Us</li>
+          <li>Careers</li>
+          <li>Blog</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+      
+      <div>
+        <div class="font-semibold text-white mb-4">Legal</div>
+        <ul class="space-y-3 text-sm">
+          <li>RBI Compliance</li>
+          <li>SEBI Registration</li>
+          <li>Privacy Policy</li>
+          <li>Terms of Service</li>
+        </ul>
+      </div>
+      
+      <div>
+        <div class="text-xs">Made with ❤️ for Indian investors who deserve luxury.</div>
+        <div class="mt-8 text-xs">© 2026 Tech Lux Finance Pvt Ltd. All Rights Reserved.</div>
+        <div class="mt-2 text-xs">Uttar Pradesh, India</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" onclick="if(event.target===this)hideLoginModal()" 
+       class="hidden fixed inset-0 bg-black/70 z-[9999] flex items-center justify-center">
+    <div onclick="event.stopImmediatePropagation()" 
+         class="glass rounded-3xl p-10 w-full max-w-md">
+      <h3 class="text-3xl heading mb-8">Welcome back to Tech Lux</h3>
+      <input type="email" placeholder="Email or Phone" 
+             class="w-full bg-white/10 border border-white/30 rounded-2xl px-6 py-5 mb-4 outline-none focus:border-yellow-400">
+      <input type="password" placeholder="Password" 
+             class="w-full bg-white/10 border border-white/30 rounded-2xl px-6 py-5 mb-8 outline-none focus:border-yellow-400">
+      <button onclick="fakeLogin()" 
+              class="w-full py-5 bg-yellow-400 text-black rounded-3xl text-lg font-semibold">Login Securely</button>
+      <p class="text-center mt-6 text-sm">Forgot password? <span class="text-yellow-400 cursor-pointer">Reset now</span></p>
+    </div>
+  </div>
+
+  <script>
+    // Tailwind script already loaded
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu')
+      const icon = document.getElementById('hamburger')
+      menu.classList.toggle('hidden')
+      icon.classList.toggle('fa-bars')
+      icon.classList.toggle('fa-xmark')
+    }
+
+    function showLoginModal() {
+      document.getElementById('loginModal').classList.remove('hidden')
+      document.getElementById('loginModal').classList.add('flex')
+    }
+
+    function hideLoginModal() {
+      const modal = document.getElementById('loginModal')
+      modal.classList.add('hidden')
+      modal.classList.remove('flex')
+    }
+
+    function fakeLogin() {
+      hideLoginModal()
+      alert('✅ Login successful! Welcome to your Tech Lux Dashboard 🎉\n\n(Real app mein yeh dashboard khulega)')
+    }
+
+    function openAccount() {
+      alert('🎟️ Account opening flow started!\n\nStep 1: Aadhaar + PAN verification (takes 45 seconds)\nStep 2: KYC complete\nWelcome to Tech Lux Family!')
+    }
+
+    function watchDemo() {
+      alert('📽️ 90-second demo video would play here.\n\nIn real website: Beautiful animated video showing AI advisor, live charts, and one-click investing.')
+    }
+
+    // Live Portfolio Value Animation
+    let portfolio = 42865420
+    setInterval(() => {
+      portfolio += Math.floor(Math.random() * 85000) + 25000
+      const el = document.getElementById('portfolio-value')
+      if (el) el.textContent = '₹' + portfolio.toLocaleString('en-IN')
+    }, 3800)
+
+    // Ticker already has CSS animation
+
+    function toggleDarkMode() {
+      alert('🌙 Dark mode already active (this is a luxury dark theme website!)')
+    }
+
+    console.log('%c🚀 Tech Lux Finance Full Website Loaded Successfully!', 'color:#D4AF37; font-size:18px; font-weight:bold')
+  </script>
+</body>
+</html>

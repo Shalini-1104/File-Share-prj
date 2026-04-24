@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+    <div class="bg-gray-300 min-h-screen ">
+       <aside id="sidebar" class="fixed h-full bg-blue-500"
+       style="width:0; transition: 0.3s"
+       ></aside>
+       <section id="section" class=" p-6" style="transition: 0.3s;">
+        <nav class="flex justify-between bg-white">
+            <h1>File Share</h1>
+            <button onclick="sidebarToggle()" class="bg-rose-500 text-white p-4 rounded shadow-xl"><i class="ri-menu-line"></i></button>
+        </nav>
+        <div>
+            <h1>Dashboard</h1>
+        </div>
+      </section>
+    </div>
+    <script src="../js/sidebar.js"></script>
+</body>
+
+</html>     
