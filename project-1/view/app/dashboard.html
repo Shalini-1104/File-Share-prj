@@ -11,17 +11,119 @@
 />
 </head>
 <body>
-    <div class="bg-gray-300 min-h-screen ">
-       <aside id="sidebar" class="fixed h-full bg-blue-500"
+    <div class="bg-blue-200 min-h-screen ">
+       <aside id="sidebar" class="fixed h-full bg-indigo-300 overflow-hidden"
        style="width:0; transition: 0.3s"
-       ></aside>
-       <section id="section" class=" p-6" style="transition: 0.3s;">
+       >
+      
+       <div class="flex flex-col items-center space-y-4 py-8">
+
+        <button class="border-2 w-50 bg-red-200 m-4" >Dashboard</button>
+        <button class="border-2 w-50 bg-red-200 m-4"><a href="myfile.html" >My Files</a></button>
+        <button class="border-2 w-50 bg-red-200 m-4"><a href="History.html">History</a></button>
+        <button class="border-2 w-50 bg-red-200 m-4">Logout</button>
+       </div>
+      
+      </aside>
+       <section id="section" class=" py-2" style="transition: 0.3s;">
         <nav class="flex justify-between bg-white">
-            <h1>File Share</h1>
+            <h1 class="font-bold text-2xl py-3 px-2">File Share</h1>
             <button onclick="sidebarToggle()" class="bg-rose-500 text-white p-4 rounded shadow-xl"><i class="ri-menu-line"></i></button>
         </nav>
-        <div>
-            <h1>Dashboard</h1>
+         <div class="px-6 py-4 space-y-8">
+          <h1>Dashboard</h1>
+          <div class="grid grid-cols-4 gap-8">
+            <div
+              class="relative w-[350px] h-40 flex flex-col justify-center items-center bg-white rounded-lg overflow-hidden"
+            >
+              <h1 class="text-2xl text-gray-400 font-semibold">Videos</h1>
+              <p class="text-4xl font-bold">25566</p>
+              <div
+                style="
+                  background-image: linear-gradient(
+                    to right,
+                    #b8cbb8 0%,
+                    #b8cbb8 0%,
+                    #b465da 0%,
+                    #cf6cc9 33%,
+                    #ee609c 66%,
+                    #ee609c 100%
+                  );
+                "
+                class="w-25 h-25 bg-rose-600 rounded-full absolute top-7 -left-3 grid place-items-center"
+              >
+                <i class="ri-live-line text-4xl text-white"></i>
+              </div>
+            </div>
+            <div
+              class="relative w-[350px] h-40 flex flex-col justify-center items-center bg-white rounded-lg overflow-hidden"
+            >
+              <h1 class="text-2xl text-gray-400 font-semibold">Photos</h1>
+              <p class="text-4xl font-bold">16566</p>
+              <div
+                style="
+                  background-image: linear-gradient(
+                    to right,
+                   #d4e7d4, #d7b3f3, #f1a7e6, #ffc1d6
+                  );
+                "
+                class="w-25 h-25 bg-rose-600 rounded-full absolute top-7 -left-3 grid place-items-center"
+              >
+                <i class="ri-camera-ai-line text-4xl text-white"></i>
+              </div>
+            </div>
+            <div
+              class="relative w-[350px] h-40 flex flex-col justify-center items-center bg-white rounded-lg overflow-hidden"
+            >
+              <h1 class="text-2xl text-gray-400 font-semibold">Pdf</h1>
+              <p class="text-4xl font-bold">37281</p>
+              <div
+                style="
+                  background-image: linear-gradient(
+                    to right,
+                  #b8cbb8, #c084d6, #d86acb, #ee609c
+                  );
+                "
+                class="w-25 h-25 bg-rose-600 rounded-full absolute top-7 -left-3 grid place-items-center"
+              >
+                <i class="ri-file-pdf-2-line text-4xl text-white"></i>
+              </div>
+            </div>
+            <div
+              class="relative w-[350px] h-40 flex flex-col justify-center items-center bg-white rounded-lg overflow-hidden"
+            >
+              <h1 class="text-2xl text-gray-400 font-semibold">Audios</h1>
+              <p class="text-4xl font-bold">23728</p>
+              <div
+                style="
+                  background-image: linear-gradient(
+                    to right,
+                   #b8cbb8, #9d6dde, #c850c0, #ff6a88
+                  );
+                "
+                class="w-25 h-25 bg-rose-600 rounded-full absolute top-7 -left-3 grid place-items-center"
+              >
+                <i class="ri-music-line text-4xl text-white"></i>
+              </div>
+            </div>
+            <div
+              class="relative w-[350px] h-40 flex flex-col justify-center items-center bg-white rounded-lg overflow-hidden"
+            >
+              <h1 class="text-2xl text-gray-400 font-semibold">Videos</h1>
+              <p class="text-4xl font-bold">25566</p>
+              <div
+                style="
+                  background-image: linear-gradient(
+                    to right,
+                    #a2e1a9, #d89deb, #d368bc, #dc26a9
+                  );
+                "
+                class="w-25 h-25 bg-rose-600 rounded-full absolute top-7 -left-3 grid place-items-center"
+              >
+                <i class="ri-live-line text-4xl text-white"></i>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

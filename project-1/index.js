@@ -6,6 +6,7 @@ mongoose.connect(process.env.DB);
 
 const express = require("express");
 const morgan = require("morgan");
+const { createUser, si } = require("./controller/user.controller");
 
 const app = express();
 
@@ -20,3 +21,5 @@ app.use(express.static("view"));
 app.get("/",(req , res)=>{
     res.send("connected");
 })
+
+app.post("/user",si);

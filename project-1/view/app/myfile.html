@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Files</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+</head>
+
+<body class="bg-blue-200">
+
+<div>
+
+<aside id="sidebar" class="fixed h-full bg-indigo-300 overflow-hidden"
+       style="width:0; transition: 0.3s">
+      
+   <div class="flex flex-col items-center space-y-4 py-8">
+    <button class="border-2 border-black w-60 bg-red-200">
+        <a href="dashboard.html">Dashboard</a>
+    </button>
+    <button class="border-2 border-black w-60 bg-red-200">My Files</button>
+    <button class="border-2 border-black w-60 bg-red-200">
+        <a href="History.html">History</a>
+    </button>
+    <button class="border-2 border-black w-60 bg-red-200">Logout</button>
+</div>
+</aside>
+
+<section id="section" class="py-2" style="transition: 0.3s;">
+  <nav class="flex justify-between bg-white">
+    <h1 class="font-bold text-2xl py-3 px-2">File Share</h1>
+    <button onclick="sidebarToggle()" class="bg-rose-500 text-white p-4 rounded shadow-xl">
+      <i class="ri-menu-line"></i>
+    </button>
+  </nav>
+<div class="p-6 ml-4">
+
+ 
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-semibold">My Files</h2>
+
+    
+    <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded shadow">
+      + Add File
+    </button>
+  </div>
+
+  
+  <div class="bg-white rounded-lg shadow overflow-hidden">
+    <table class="w-full">
+      
+      <thead class="bg-gray-900 text-white">
+        <tr>
+          <th class="text-left px-4 py-3">Filename</th>
+          <th class="text-left px-4 py-3">Type</th>
+          <th class="text-left px-4 py-3">Size</th>
+          <th class="text-left px-4 py-3">Created</th>
+          <th class="text-left px-4 py-3">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody class="text-gray-700">
+
+        <tr class="border-b">
+          <td class="px-4 py-3">Introduction to HTML</td>
+          <td class="px-4 py-3">Image</td>
+          <td class="px-4 py-3">20MB</td>
+          <td class="px-4 py-3">24-04-2026</td>
+          <td class="px-4 py-3 space-x-2">
+            <button class="bg-red-400 text-white px-2 py-1 rounded"><i class="ri-delete-bin-line"></i></button>
+            <button class="bg-green-500 text-white px-2 py-1 rounded"><i class="ri-file-download-line"></i></button>
+            <button class="bg-yellow-400 px-2 py-1 rounded"><i class="ri-share-line"></i></button>
+          </td>
+        </tr>
+
+        <tr class="border-b">
+          <td class="px-4 py-3">CSS Notes</td>
+          <td class="px-4 py-3">PDF</td>
+          <td class="px-4 py-3">15MB</td>
+          <td class="px-4 py-3">23-04-2026</td>
+          <td class="px-4 py-3 space-x-2">
+            <button class="bg-red-400 text-white px-2 py-1 rounded"><i class="ri-delete-bin-line"></i></button>
+            <button class="bg-green-500 text-white px-2 py-1 rounded"><i class="ri-file-download-line"></i></button>
+            <button class="bg-yellow-400 px-2 py-1 rounded"><i class="ri-share-line"></i></button>
+          </td>
+        </tr>
+
+      </tbody>
+
+    </table>
+  </div>
+
+</div>
+<script src="../js/sidebar.js"></script>
+</div>
+
+</body>
+</html>
