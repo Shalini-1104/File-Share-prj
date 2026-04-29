@@ -5,24 +5,29 @@ const mongoose = require("mongoose");
 mongoose.connect(process.env.DB);
 
 const express = require("express");
+const {v4 : uniqueId} = require("uuid");
 
 const multer = require("multer");
 
 
 
-// const storage = multer.diskStorage({
-//     destination:(req, file , next)=>{
-//        next(null , "files/") 
-//     },
+const storage = multer.diskStorage({
+    destination:(req, file , next)=>{
+       next(null , "files/") 
+    },
 
-//     filename:(req, file , next)=>{
-
-//     }
-// })
+    filename:(req, file , next)=>{
+        const nameArr = file.originalname.split(".");
+        const ext = nameArr.pop();
+        const name = `${uniqueId()}.${ext}`;
+        next(null , name);
+    }
+})
+const upload = multer({storage:storage});
 
 const morgan = require("morgan");
 const { createUser, si, login } = require("./controller/user.controller");
-const { createFile } = require("./controller/file.controller");
+const { createFile, fetchFile } = require("./controller/file.controller");
 
 const app = express();
 
@@ -40,4 +45,5 @@ app.get("/",(req , res)=>{
 
 app.post("/signin",si);
 app.post("/login",login);
-app.post("/file",createFile)
+app.post("/file",upload.single("file"),createFile);
+app.get("/file",fetchFile)

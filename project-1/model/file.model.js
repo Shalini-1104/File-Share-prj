@@ -17,7 +17,9 @@ const fileSchema = new Schema({
         type : Number,
         required : true,
     },
-    
+    path :{
+        type : String,
+    }
 },{timestamps : true});
 
 const FileModel = model("File", fileSchema);
