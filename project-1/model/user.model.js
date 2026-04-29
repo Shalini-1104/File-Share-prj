@@ -26,7 +26,7 @@ const userSchema = new Schema({
         type : String,
         required : true,
     }
-})
+},{timestamps: true})
 
 userSchema.pre("save", async function(){
    const emailExists= await model("User").countDocuments({email : this.email});

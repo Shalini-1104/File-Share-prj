@@ -5,8 +5,24 @@ const mongoose = require("mongoose");
 mongoose.connect(process.env.DB);
 
 const express = require("express");
+
+const multer = require("multer");
+
+
+
+// const storage = multer.diskStorage({
+//     destination:(req, file , next)=>{
+//        next(null , "files/") 
+//     },
+
+//     filename:(req, file , next)=>{
+
+//     }
+// })
+
 const morgan = require("morgan");
-const { createUser, si } = require("./controller/user.controller");
+const { createUser, si, login } = require("./controller/user.controller");
+const { createFile } = require("./controller/file.controller");
 
 const app = express();
 
@@ -22,4 +38,6 @@ app.get("/",(req , res)=>{
     res.send("connected");
 })
 
-app.post("/user",si);
+app.post("/signin",si);
+app.post("/login",login);
+app.post("/file",createFile)
